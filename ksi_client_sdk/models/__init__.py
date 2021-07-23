@@ -1,0 +1,37 @@
+# flake8: noqa
+
+# import all models into this package
+# if you have many models here with many references from one model to another this may
+# raise a RecursionError
+# to avoid this, import only the models that you directly need like:
+# from from ksi_client_sdk.model.pet import Pet
+# or import this package, but before doing it, use:
+# import sys
+# sys.setrecursionlimit(n)
+
+from ksi_client_sdk.model.bot_event_for_response import BotEventForResponse
+from ksi_client_sdk.model.bot_for_response import BotForResponse
+from ksi_client_sdk.model.camera_for_response import CameraForResponse
+from ksi_client_sdk.model.http_validation_error import HTTPValidationError
+from ksi_client_sdk.model.kpi_area_performance_for_response import KPIAreaPerformanceForResponse
+from ksi_client_sdk.model.kpi_exterior_analysis_for_response import KPIExteriorAnalysisForResponse
+from ksi_client_sdk.model.kpi_location_distribution_for_response import KPILocationDistributionForResponse
+from ksi_client_sdk.model.kpi_location_performance_for_response import KPILocationPerformanceForResponse
+from ksi_client_sdk.model.kpi_total_visitors_for_response import KPITotalVisitorsForResponse
+from ksi_client_sdk.model.kpi_traffic_for_response import KPITrafficForResponse
+from ksi_client_sdk.model.location_for_response import LocationForResponse
+from ksi_client_sdk.model.message_response import MessageResponse
+from ksi_client_sdk.model.node_detection_box import NodeDetectionBox
+from ksi_client_sdk.model.node_detection_object import NodeDetectionObject
+from ksi_client_sdk.model.node_detections_request import NodeDetectionsRequest
+from ksi_client_sdk.model.page_bot_event_for_response import PageBotEventForResponse
+from ksi_client_sdk.model.page_bot_for_response import PageBotForResponse
+from ksi_client_sdk.model.page_camera_for_response import PageCameraForResponse
+from ksi_client_sdk.model.page_kpi_area_performance_for_response import PageKPIAreaPerformanceForResponse
+from ksi_client_sdk.model.page_kpi_exterior_analysis_for_response import PageKPIExteriorAnalysisForResponse
+from ksi_client_sdk.model.page_kpi_location_distribution_for_response import PageKPILocationDistributionForResponse
+from ksi_client_sdk.model.page_kpi_location_performance_for_response import PageKPILocationPerformanceForResponse
+from ksi_client_sdk.model.page_kpi_total_visitors_for_response import PageKPITotalVisitorsForResponse
+from ksi_client_sdk.model.page_kpi_traffic_for_response import PageKPITrafficForResponse
+from ksi_client_sdk.model.time_bucket import TimeBucket
+from ksi_client_sdk.model.validation_error import ValidationError
