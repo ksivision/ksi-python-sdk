@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | 
 **box** | [**NodeDetectionBox**](NodeDetectionBox.md) |  | 
-**uuid** | **str** |  | [optional] 
+**uuid** | **str** |  | [optional]  if omitted the server will use the default value of ""
 **class_name** | **str** |  | [optional]  if omitted the server will use the default value of "person"
 **rot_bbox** | **[float]** |  | [optional] 
 **in_camera_zone** | **bool** |  | [optional]  if omitted the server will use the default value of True

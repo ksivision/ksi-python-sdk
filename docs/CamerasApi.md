@@ -16,6 +16,7 @@ Add persons detections for the camera
 ### Example
 
 * Bearer Authentication (APIToken):
+
 ```python
 import time
 import ksi_client_sdk
@@ -51,7 +52,7 @@ with ksi_client_sdk.ApiClient(configuration) as api_client:
         objects=[
             NodeDetectionObject(
                 id=1,
-                uuid="uuid_example",
+                uuid="",
                 class_name="person",
                 box=NodeDetectionBox(
                     x1=3.14,
@@ -99,6 +100,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
@@ -107,13 +109,14 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_all_cameras_api_cameras_get**
-> PageCameraForResponse get_all_cameras_api_cameras_get()
+> PageCameraForResponse get_all_cameras_api_cameras_get(location_id)
 
 Get All Cameras
 
 ### Example
 
 * Bearer Authentication (APIToken):
+
 ```python
 import time
 import ksi_client_sdk
@@ -141,15 +144,23 @@ configuration = ksi_client_sdk.Configuration(
 with ksi_client_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cameras_api.CamerasApi(api_client)
-    location_id = 1 # int | Location id to filter. (optional)
+    location_id = 1 # int | Location id to filter.
     page = 0 # int |  (optional) if omitted the server will use the default value of 0
     size = 50 # int |  (optional) if omitted the server will use the default value of 50
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get All Cameras
+        api_response = api_instance.get_all_cameras_api_cameras_get(location_id)
+        pprint(api_response)
+    except ksi_client_sdk.ApiException as e:
+        print("Exception when calling CamerasApi->get_all_cameras_api_cameras_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Get All Cameras
-        api_response = api_instance.get_all_cameras_api_cameras_get(location_id=location_id, page=page, size=size)
+        api_response = api_instance.get_all_cameras_api_cameras_get(location_id, page=page, size=size)
         pprint(api_response)
     except ksi_client_sdk.ApiException as e:
         print("Exception when calling CamerasApi->get_all_cameras_api_cameras_get: %s\n" % e)
@@ -160,7 +171,7 @@ with ksi_client_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **location_id** | **int**| Location id to filter. | [optional]
+ **location_id** | **int**| Location id to filter. |
  **page** | **int**|  | [optional] if omitted the server will use the default value of 0
  **size** | **int**|  | [optional] if omitted the server will use the default value of 50
 
@@ -179,6 +190,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |

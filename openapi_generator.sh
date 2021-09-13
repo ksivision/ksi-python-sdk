@@ -1,4 +1,5 @@
 
+#docker image rm openapitools/openapi-generator-online
 # Start container at port 8888 and save the container id
 CID=$(docker run -d -p 8888:8080 openapitools/openapi-generator-online)
 
@@ -12,7 +13,7 @@ GEN_IP=$(docker inspect --format '{{.NetworkSettings.IPAddress}}'  $CID)
 CODE=$(curl -X POST \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
--d '{"openAPIUrl": "http://192.168.76.102/api/openapi.json", "options": {"packageName": "ksi_client_sdk"}}' \
+-d '{"openAPIUrl": "http://192.168.76.100/api/openapi.json", "options": {"packageName": "ksi_client_sdk"}}' \
 'http://localhost:8888/api/gen/clients/python' \
 |  jq -r  '.code')
 
@@ -26,4 +27,4 @@ curl -X GET "http://localhost:8888/api/gen/download/${CODE}" \
 unzip result.zip
 
 # Shutdown the swagger generator image
-docker stop $CID && docker rm $CID
+#docker stop $CID && docker rm $CID

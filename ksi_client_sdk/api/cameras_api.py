@@ -160,6 +160,7 @@ class CamerasApi(object):
 
         def __get_all_cameras_api_cameras_get(
             self,
+            location_id,
             **kwargs
         ):
             """Get All Cameras  # noqa: E501
@@ -167,12 +168,13 @@ class CamerasApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_all_cameras_api_cameras_get(async_req=True)
+            >>> thread = api.get_all_cameras_api_cameras_get(location_id, async_req=True)
             >>> result = thread.get()
 
+            Args:
+                location_id (int): Location id to filter.
 
             Keyword Args:
-                location_id (int): Location id to filter.. [optional]
                 page (int): [optional] if omitted the server will use the default value of 0
                 size (int): [optional] if omitted the server will use the default value of 50
                 _return_http_data_only (bool): response data without head status
@@ -219,6 +221,8 @@ class CamerasApi(object):
                 '_check_return_type', True
             )
             kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['location_id'] = \
+                location_id
             return self.call_with_http_info(**kwargs)
 
         self.get_all_cameras_api_cameras_get = _Endpoint(
@@ -238,7 +242,9 @@ class CamerasApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'location_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [

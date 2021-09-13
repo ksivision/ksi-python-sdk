@@ -58,6 +58,13 @@ class TestLocationsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_location_kpis_persons_count_api_locations_location_id_kpis_persons_count_get(self):
+        """Test case for get_location_kpis_persons_count_api_locations_location_id_kpis_persons_count_get
+
+        Get Location Kpis Persons Count  # noqa: E501
+        """
+        pass
+
     def test_get_location_kpis_total_visitors_api_locations_location_id_kpis_total_visitors_get(self):
         """Test case for get_location_kpis_total_visitors_api_locations_location_id_kpis_total_visitors_get
 
@@ -69,6 +76,13 @@ class TestLocationsApi(unittest.TestCase):
         """Test case for get_location_kpis_traffic_api_locations_location_id_kpis_traffic_get
 
         Get Location Kpis Traffic  # noqa: E501
+        """
+        pass
+
+    def test_get_location_person_routes_api_locations_location_id_person_routes_get(self):
+        """Test case for get_location_person_routes_api_locations_location_id_person_routes_get
+
+        Get Location Person Routes  # noqa: E501
         """
         pass
 

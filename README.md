@@ -114,7 +114,10 @@ from ksi_client_sdk.model.page_bot_event_for_response import PageBotEventForResp
 from ksi_client_sdk.model.page_bot_for_response import PageBotForResponse
 from ksi_client_sdk.model.page_kpi_area_performance_for_response import PageKPIAreaPerformanceForResponse
 from ksi_client_sdk.model.page_kpi_exterior_analysis_for_response import PageKPIExteriorAnalysisForResponse
+from ksi_client_sdk.model.page_kpi_queue_managment_response import PageKPIQueueManagmentResponse
 from ksi_client_sdk.model.page_kpi_traffic_for_response import PageKPITrafficForResponse
+from ksi_client_sdk.model.page_kpi_traffic_with_features_for_response import PageKPITrafficWithFeaturesForResponse
+from ksi_client_sdk.model.time_bucket import TimeBucket
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ksi_client_sdk.Configuration(
@@ -136,13 +139,13 @@ configuration = ksi_client_sdk.Configuration(
 with ksi_client_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = bots_api.BotsApi(api_client)
-    location_id = 1 # int | Location id to filter. (optional)
+    location_id = 1 # int | Location id to filter.
 page = 0 # int |  (optional) (default to 0)
 size = 50 # int |  (optional) (default to 50)
 
     try:
         # Get All Bots
-        api_response = api_instance.get_all_bots_api_bots_get(location_id=location_id, page=page, size=size)
+        api_response = api_instance.get_all_bots_api_bots_get(location_id, page=page, size=size)
         pprint(api_response)
     except ksi_client_sdk.ApiException as e:
         print("Exception when calling BotsApi->get_all_bots_api_bots_get: %s\n" % e)
@@ -159,7 +162,9 @@ Class | Method | HTTP request | Description
 *BotsApi* | [**get_bot_events_queue_management_api_bots_bot_id_events_queue_management_get**](docs/BotsApi.md#get_bot_events_queue_management_api_bots_bot_id_events_queue_management_get) | **GET** /api/bots/{bot_id}/events/queue-management | Get Bot Events Queue Management
 *BotsApi* | [**get_bot_kpis_area_performance_api_bots_bot_id_kpis_area_performance_get**](docs/BotsApi.md#get_bot_kpis_area_performance_api_bots_bot_id_kpis_area_performance_get) | **GET** /api/bots/{bot_id}/kpis/area-performance | Get Bot Kpis Area Performance
 *BotsApi* | [**get_bot_kpis_exterior_analysis_api_bots_bot_id_kpis_exterior_analysis_get**](docs/BotsApi.md#get_bot_kpis_exterior_analysis_api_bots_bot_id_kpis_exterior_analysis_get) | **GET** /api/bots/{bot_id}/kpis/exterior-analysis | Get Bot Kpis Exterior Analysis
+*BotsApi* | [**get_bot_kpis_queue_managment_api_bots_bot_id_kpis_queue_management_get**](docs/BotsApi.md#get_bot_kpis_queue_managment_api_bots_bot_id_kpis_queue_management_get) | **GET** /api/bots/{bot_id}/kpis/queue-management | Get Bot Kpis Queue Managment
 *BotsApi* | [**get_bot_kpis_traffic_api_bots_bot_id_kpis_traffic_get**](docs/BotsApi.md#get_bot_kpis_traffic_api_bots_bot_id_kpis_traffic_get) | **GET** /api/bots/{bot_id}/kpis/traffic | Get Bot Kpis Traffic
+*BotsApi* | [**get_bot_kpis_traffic_with_data_features_api_bots_bot_id_kpis_traffic_features_get**](docs/BotsApi.md#get_bot_kpis_traffic_with_data_features_api_bots_bot_id_kpis_traffic_features_get) | **GET** /api/bots/{bot_id}/kpis/traffic-features | Get Bot Kpis Traffic With  Data Features
 *CamerasApi* | [**add_persons_detections_camera_api_cameras_person_detections_post**](docs/CamerasApi.md#add_persons_detections_camera_api_cameras_person_detections_post) | **POST** /api/cameras/person-detections | Add persons detections for the camera
 *CamerasApi* | [**get_all_cameras_api_cameras_get**](docs/CamerasApi.md#get_all_cameras_api_cameras_get) | **GET** /api/cameras | Get All Cameras
 *LocationsApi* | [**get_all_locations_api_locations_get**](docs/LocationsApi.md#get_all_locations_api_locations_get) | **GET** /api/locations | Get all locations
@@ -167,8 +172,10 @@ Class | Method | HTTP request | Description
 *LocationsApi* | [**get_location_kpis_distribution_api_locations_location_id_kpis_distribution_get**](docs/LocationsApi.md#get_location_kpis_distribution_api_locations_location_id_kpis_distribution_get) | **GET** /api/locations/{location_id}/kpis/distribution | Get Location Kpis Distribution
 *LocationsApi* | [**get_location_kpis_exterior_analysis_api_locations_location_id_kpis_exterior_analysis_get**](docs/LocationsApi.md#get_location_kpis_exterior_analysis_api_locations_location_id_kpis_exterior_analysis_get) | **GET** /api/locations/{location_id}/kpis/exterior-analysis | Get Location Kpis Exterior Analysis
 *LocationsApi* | [**get_location_kpis_performance_api_locations_location_id_kpis_performance_get**](docs/LocationsApi.md#get_location_kpis_performance_api_locations_location_id_kpis_performance_get) | **GET** /api/locations/{location_id}/kpis/performance | Get Location Kpis Performance
+*LocationsApi* | [**get_location_kpis_persons_count_api_locations_location_id_kpis_persons_count_get**](docs/LocationsApi.md#get_location_kpis_persons_count_api_locations_location_id_kpis_persons_count_get) | **GET** /api/locations/{location_id}/kpis/persons-count | Get Location Kpis Persons Count
 *LocationsApi* | [**get_location_kpis_total_visitors_api_locations_location_id_kpis_total_visitors_get**](docs/LocationsApi.md#get_location_kpis_total_visitors_api_locations_location_id_kpis_total_visitors_get) | **GET** /api/locations/{location_id}/kpis/total-visitors | Get Location Kpis Total Visitors
 *LocationsApi* | [**get_location_kpis_traffic_api_locations_location_id_kpis_traffic_get**](docs/LocationsApi.md#get_location_kpis_traffic_api_locations_location_id_kpis_traffic_get) | **GET** /api/locations/{location_id}/kpis/traffic | Get Location Kpis Traffic
+*LocationsApi* | [**get_location_person_routes_api_locations_location_id_person_routes_get**](docs/LocationsApi.md#get_location_person_routes_api_locations_location_id_person_routes_get) | **GET** /api/locations/{location_id}/person-routes | Get Location Person Routes
 
 
 ## Documentation For Models
@@ -181,9 +188,13 @@ Class | Method | HTTP request | Description
  - [KPIExteriorAnalysisForResponse](docs/KPIExteriorAnalysisForResponse.md)
  - [KPILocationDistributionForResponse](docs/KPILocationDistributionForResponse.md)
  - [KPILocationPerformanceForResponse](docs/KPILocationPerformanceForResponse.md)
+ - [KPILocationPersonsCountResponse](docs/KPILocationPersonsCountResponse.md)
+ - [KPIQueueManagmentResponse](docs/KPIQueueManagmentResponse.md)
  - [KPITotalVisitorsForResponse](docs/KPITotalVisitorsForResponse.md)
  - [KPITrafficForResponse](docs/KPITrafficForResponse.md)
+ - [KPITrafficWithFeaturesForResponse](docs/KPITrafficWithFeaturesForResponse.md)
  - [LocationForResponse](docs/LocationForResponse.md)
+ - [LocationRoutesForResponse](docs/LocationRoutesForResponse.md)
  - [MessageResponse](docs/MessageResponse.md)
  - [NodeDetectionBox](docs/NodeDetectionBox.md)
  - [NodeDetectionObject](docs/NodeDetectionObject.md)
@@ -195,8 +206,13 @@ Class | Method | HTTP request | Description
  - [PageKPIExteriorAnalysisForResponse](docs/PageKPIExteriorAnalysisForResponse.md)
  - [PageKPILocationDistributionForResponse](docs/PageKPILocationDistributionForResponse.md)
  - [PageKPILocationPerformanceForResponse](docs/PageKPILocationPerformanceForResponse.md)
+ - [PageKPILocationPersonsCountResponse](docs/PageKPILocationPersonsCountResponse.md)
+ - [PageKPIQueueManagmentResponse](docs/PageKPIQueueManagmentResponse.md)
  - [PageKPITotalVisitorsForResponse](docs/PageKPITotalVisitorsForResponse.md)
  - [PageKPITrafficForResponse](docs/PageKPITrafficForResponse.md)
+ - [PageKPITrafficWithFeaturesForResponse](docs/PageKPITrafficWithFeaturesForResponse.md)
+ - [PageLocationRoutesForResponse](docs/PageLocationRoutesForResponse.md)
+ - [PersonRouteObject](docs/PersonRouteObject.md)
  - [TimeBucket](docs/TimeBucket.md)
  - [ValidationError](docs/ValidationError.md)
 
