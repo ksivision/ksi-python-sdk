@@ -27,8 +27,11 @@ from ksi_client_sdk.model.page_kpi_area_performance_for_response import PageKPIA
 from ksi_client_sdk.model.page_kpi_exterior_analysis_for_response import PageKPIExteriorAnalysisForResponse
 from ksi_client_sdk.model.page_kpi_location_distribution_for_response import PageKPILocationDistributionForResponse
 from ksi_client_sdk.model.page_kpi_location_performance_for_response import PageKPILocationPerformanceForResponse
+from ksi_client_sdk.model.page_kpi_location_persons_count_response import PageKPILocationPersonsCountResponse
 from ksi_client_sdk.model.page_kpi_total_visitors_for_response import PageKPITotalVisitorsForResponse
 from ksi_client_sdk.model.page_kpi_traffic_for_response import PageKPITrafficForResponse
+from ksi_client_sdk.model.page_location_routes_for_response import PageLocationRoutesForResponse
+from ksi_client_sdk.model.time_bucket import TimeBucket
 
 
 class LocationsApi(object):
@@ -152,6 +155,9 @@ class LocationsApi(object):
         def __get_location_kpis_area_performance_api_locations_location_id_kpis_area_performance_get(
             self,
             location_id,
+            time_bucket,
+            from_time,
+            to_time,
             **kwargs
         ):
             """Get Location Kpis Area Performance  # noqa: E501
@@ -159,16 +165,16 @@ class LocationsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_location_kpis_area_performance_api_locations_location_id_kpis_area_performance_get(location_id, async_req=True)
+            >>> thread = api.get_location_kpis_area_performance_api_locations_location_id_kpis_area_performance_get(location_id, time_bucket, from_time, to_time, async_req=True)
             >>> result = thread.get()
 
             Args:
                 location_id (int):
+                time_bucket (TimeBucket):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
 
             Keyword Args:
-                from_time (datetime): Date from fetch results. Format ISO-8601.. [optional]
-                to_time (datetime): Date to fetch results. Format ISO-8601.. [optional]
-                time_bucket (dict): Time bucket of query items.. [optional]
                 page (int): [optional] if omitted the server will use the default value of 0
                 size (int): [optional] if omitted the server will use the default value of 50
                 _return_http_data_only (bool): response data without head status
@@ -217,6 +223,12 @@ class LocationsApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['location_id'] = \
                 location_id
+            kwargs['time_bucket'] = \
+                time_bucket
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
             return self.call_with_http_info(**kwargs)
 
         self.get_location_kpis_area_performance_api_locations_location_id_kpis_area_performance_get = _Endpoint(
@@ -233,14 +245,17 @@ class LocationsApi(object):
             params_map={
                 'all': [
                     'location_id',
+                    'time_bucket',
                     'from_time',
                     'to_time',
-                    'time_bucket',
                     'page',
                     'size',
                 ],
                 'required': [
                     'location_id',
+                    'time_bucket',
+                    'from_time',
+                    'to_time',
                 ],
                 'nullable': [
                 ],
@@ -267,12 +282,12 @@ class LocationsApi(object):
                 'openapi_types': {
                     'location_id':
                         (int,),
+                    'time_bucket':
+                        (TimeBucket,),
                     'from_time':
                         (datetime,),
                     'to_time':
                         (datetime,),
-                    'time_bucket':
-                        (dict,),
                     'page':
                         (int,),
                     'size':
@@ -280,17 +295,17 @@ class LocationsApi(object):
                 },
                 'attribute_map': {
                     'location_id': 'location_id',
+                    'time_bucket': 'timeBucket',
                     'from_time': 'fromTime',
                     'to_time': 'toTime',
-                    'time_bucket': 'timeBucket',
                     'page': 'page',
                     'size': 'size',
                 },
                 'location_map': {
                     'location_id': 'path',
+                    'time_bucket': 'query',
                     'from_time': 'query',
                     'to_time': 'query',
-                    'time_bucket': 'query',
                     'page': 'query',
                     'size': 'query',
                 },
@@ -310,6 +325,9 @@ class LocationsApi(object):
         def __get_location_kpis_distribution_api_locations_location_id_kpis_distribution_get(
             self,
             location_id,
+            time_bucket,
+            from_time,
+            to_time,
             **kwargs
         ):
             """Get Location Kpis Distribution  # noqa: E501
@@ -317,16 +335,16 @@ class LocationsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_location_kpis_distribution_api_locations_location_id_kpis_distribution_get(location_id, async_req=True)
+            >>> thread = api.get_location_kpis_distribution_api_locations_location_id_kpis_distribution_get(location_id, time_bucket, from_time, to_time, async_req=True)
             >>> result = thread.get()
 
             Args:
                 location_id (int):
+                time_bucket (TimeBucket):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
 
             Keyword Args:
-                from_time (datetime): Date from fetch results. Format ISO-8601.. [optional]
-                to_time (datetime): Date to fetch results. Format ISO-8601.. [optional]
-                time_bucket (dict): Time bucket of query items.. [optional]
                 page (int): [optional] if omitted the server will use the default value of 0
                 size (int): [optional] if omitted the server will use the default value of 50
                 _return_http_data_only (bool): response data without head status
@@ -375,6 +393,12 @@ class LocationsApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['location_id'] = \
                 location_id
+            kwargs['time_bucket'] = \
+                time_bucket
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
             return self.call_with_http_info(**kwargs)
 
         self.get_location_kpis_distribution_api_locations_location_id_kpis_distribution_get = _Endpoint(
@@ -391,14 +415,17 @@ class LocationsApi(object):
             params_map={
                 'all': [
                     'location_id',
+                    'time_bucket',
                     'from_time',
                     'to_time',
-                    'time_bucket',
                     'page',
                     'size',
                 ],
                 'required': [
                     'location_id',
+                    'time_bucket',
+                    'from_time',
+                    'to_time',
                 ],
                 'nullable': [
                 ],
@@ -425,12 +452,12 @@ class LocationsApi(object):
                 'openapi_types': {
                     'location_id':
                         (int,),
+                    'time_bucket':
+                        (TimeBucket,),
                     'from_time':
                         (datetime,),
                     'to_time':
                         (datetime,),
-                    'time_bucket':
-                        (dict,),
                     'page':
                         (int,),
                     'size':
@@ -438,17 +465,17 @@ class LocationsApi(object):
                 },
                 'attribute_map': {
                     'location_id': 'location_id',
+                    'time_bucket': 'timeBucket',
                     'from_time': 'fromTime',
                     'to_time': 'toTime',
-                    'time_bucket': 'timeBucket',
                     'page': 'page',
                     'size': 'size',
                 },
                 'location_map': {
                     'location_id': 'path',
+                    'time_bucket': 'query',
                     'from_time': 'query',
                     'to_time': 'query',
-                    'time_bucket': 'query',
                     'page': 'query',
                     'size': 'query',
                 },
@@ -468,6 +495,9 @@ class LocationsApi(object):
         def __get_location_kpis_exterior_analysis_api_locations_location_id_kpis_exterior_analysis_get(
             self,
             location_id,
+            time_bucket,
+            from_time,
+            to_time,
             **kwargs
         ):
             """Get Location Kpis Exterior Analysis  # noqa: E501
@@ -475,16 +505,16 @@ class LocationsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_location_kpis_exterior_analysis_api_locations_location_id_kpis_exterior_analysis_get(location_id, async_req=True)
+            >>> thread = api.get_location_kpis_exterior_analysis_api_locations_location_id_kpis_exterior_analysis_get(location_id, time_bucket, from_time, to_time, async_req=True)
             >>> result = thread.get()
 
             Args:
                 location_id (int):
+                time_bucket (TimeBucket):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
 
             Keyword Args:
-                from_time (datetime): Date from fetch results. Format ISO-8601.. [optional]
-                to_time (datetime): Date to fetch results. Format ISO-8601.. [optional]
-                time_bucket (dict): Time bucket of query items.. [optional]
                 page (int): [optional] if omitted the server will use the default value of 0
                 size (int): [optional] if omitted the server will use the default value of 50
                 _return_http_data_only (bool): response data without head status
@@ -533,6 +563,12 @@ class LocationsApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['location_id'] = \
                 location_id
+            kwargs['time_bucket'] = \
+                time_bucket
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
             return self.call_with_http_info(**kwargs)
 
         self.get_location_kpis_exterior_analysis_api_locations_location_id_kpis_exterior_analysis_get = _Endpoint(
@@ -549,14 +585,17 @@ class LocationsApi(object):
             params_map={
                 'all': [
                     'location_id',
+                    'time_bucket',
                     'from_time',
                     'to_time',
-                    'time_bucket',
                     'page',
                     'size',
                 ],
                 'required': [
                     'location_id',
+                    'time_bucket',
+                    'from_time',
+                    'to_time',
                 ],
                 'nullable': [
                 ],
@@ -583,12 +622,12 @@ class LocationsApi(object):
                 'openapi_types': {
                     'location_id':
                         (int,),
+                    'time_bucket':
+                        (TimeBucket,),
                     'from_time':
                         (datetime,),
                     'to_time':
                         (datetime,),
-                    'time_bucket':
-                        (dict,),
                     'page':
                         (int,),
                     'size':
@@ -596,17 +635,17 @@ class LocationsApi(object):
                 },
                 'attribute_map': {
                     'location_id': 'location_id',
+                    'time_bucket': 'timeBucket',
                     'from_time': 'fromTime',
                     'to_time': 'toTime',
-                    'time_bucket': 'timeBucket',
                     'page': 'page',
                     'size': 'size',
                 },
                 'location_map': {
                     'location_id': 'path',
+                    'time_bucket': 'query',
                     'from_time': 'query',
                     'to_time': 'query',
-                    'time_bucket': 'query',
                     'page': 'query',
                     'size': 'query',
                 },
@@ -626,6 +665,9 @@ class LocationsApi(object):
         def __get_location_kpis_performance_api_locations_location_id_kpis_performance_get(
             self,
             location_id,
+            time_bucket,
+            from_time,
+            to_time,
             **kwargs
         ):
             """Get Location Kpis Performance  # noqa: E501
@@ -633,16 +675,16 @@ class LocationsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_location_kpis_performance_api_locations_location_id_kpis_performance_get(location_id, async_req=True)
+            >>> thread = api.get_location_kpis_performance_api_locations_location_id_kpis_performance_get(location_id, time_bucket, from_time, to_time, async_req=True)
             >>> result = thread.get()
 
             Args:
                 location_id (int):
+                time_bucket (TimeBucket):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
 
             Keyword Args:
-                from_time (datetime): Date from fetch results. Format ISO-8601.. [optional]
-                to_time (datetime): Date to fetch results. Format ISO-8601.. [optional]
-                time_bucket (dict): Time bucket of query items.. [optional]
                 page (int): [optional] if omitted the server will use the default value of 0
                 size (int): [optional] if omitted the server will use the default value of 50
                 _return_http_data_only (bool): response data without head status
@@ -691,6 +733,12 @@ class LocationsApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['location_id'] = \
                 location_id
+            kwargs['time_bucket'] = \
+                time_bucket
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
             return self.call_with_http_info(**kwargs)
 
         self.get_location_kpis_performance_api_locations_location_id_kpis_performance_get = _Endpoint(
@@ -707,14 +755,17 @@ class LocationsApi(object):
             params_map={
                 'all': [
                     'location_id',
+                    'time_bucket',
                     'from_time',
                     'to_time',
-                    'time_bucket',
                     'page',
                     'size',
                 ],
                 'required': [
                     'location_id',
+                    'time_bucket',
+                    'from_time',
+                    'to_time',
                 ],
                 'nullable': [
                 ],
@@ -741,12 +792,12 @@ class LocationsApi(object):
                 'openapi_types': {
                     'location_id':
                         (int,),
+                    'time_bucket':
+                        (TimeBucket,),
                     'from_time':
                         (datetime,),
                     'to_time':
                         (datetime,),
-                    'time_bucket':
-                        (dict,),
                     'page':
                         (int,),
                     'size':
@@ -754,17 +805,17 @@ class LocationsApi(object):
                 },
                 'attribute_map': {
                     'location_id': 'location_id',
+                    'time_bucket': 'timeBucket',
                     'from_time': 'fromTime',
                     'to_time': 'toTime',
-                    'time_bucket': 'timeBucket',
                     'page': 'page',
                     'size': 'size',
                 },
                 'location_map': {
                     'location_id': 'path',
+                    'time_bucket': 'query',
                     'from_time': 'query',
                     'to_time': 'query',
-                    'time_bucket': 'query',
                     'page': 'query',
                     'size': 'query',
                 },
@@ -781,9 +832,182 @@ class LocationsApi(object):
             callable=__get_location_kpis_performance_api_locations_location_id_kpis_performance_get
         )
 
+        def __get_location_kpis_persons_count_api_locations_location_id_kpis_persons_count_get(
+            self,
+            location_id,
+            time_bucket,
+            from_time,
+            to_time,
+            **kwargs
+        ):
+            """Get Location Kpis Persons Count  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_location_kpis_persons_count_api_locations_location_id_kpis_persons_count_get(location_id, time_bucket, from_time, to_time, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                location_id (int):
+                time_bucket (TimeBucket):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
+
+            Keyword Args:
+                page (int): [optional] if omitted the server will use the default value of 0
+                size (int): [optional] if omitted the server will use the default value of 50
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                PageKPILocationPersonsCountResponse
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['location_id'] = \
+                location_id
+            kwargs['time_bucket'] = \
+                time_bucket
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
+            return self.call_with_http_info(**kwargs)
+
+        self.get_location_kpis_persons_count_api_locations_location_id_kpis_persons_count_get = _Endpoint(
+            settings={
+                'response_type': (PageKPILocationPersonsCountResponse,),
+                'auth': [
+                    'APIToken'
+                ],
+                'endpoint_path': '/api/locations/{location_id}/kpis/persons-count',
+                'operation_id': 'get_location_kpis_persons_count_api_locations_location_id_kpis_persons_count_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'location_id',
+                    'time_bucket',
+                    'from_time',
+                    'to_time',
+                    'page',
+                    'size',
+                ],
+                'required': [
+                    'location_id',
+                    'time_bucket',
+                    'from_time',
+                    'to_time',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'page',
+                    'size',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('page',): {
+
+                        'inclusive_minimum': 0,
+                    },
+                    ('size',): {
+
+                        'inclusive_maximum': 100,
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'location_id':
+                        (int,),
+                    'time_bucket':
+                        (TimeBucket,),
+                    'from_time':
+                        (datetime,),
+                    'to_time':
+                        (datetime,),
+                    'page':
+                        (int,),
+                    'size':
+                        (int,),
+                },
+                'attribute_map': {
+                    'location_id': 'location_id',
+                    'time_bucket': 'timeBucket',
+                    'from_time': 'fromTime',
+                    'to_time': 'toTime',
+                    'page': 'page',
+                    'size': 'size',
+                },
+                'location_map': {
+                    'location_id': 'path',
+                    'time_bucket': 'query',
+                    'from_time': 'query',
+                    'to_time': 'query',
+                    'page': 'query',
+                    'size': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_location_kpis_persons_count_api_locations_location_id_kpis_persons_count_get
+        )
+
         def __get_location_kpis_total_visitors_api_locations_location_id_kpis_total_visitors_get(
             self,
             location_id,
+            time_bucket,
+            from_time,
+            to_time,
             **kwargs
         ):
             """Get Location Kpis Total Visitors  # noqa: E501
@@ -791,16 +1015,16 @@ class LocationsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_location_kpis_total_visitors_api_locations_location_id_kpis_total_visitors_get(location_id, async_req=True)
+            >>> thread = api.get_location_kpis_total_visitors_api_locations_location_id_kpis_total_visitors_get(location_id, time_bucket, from_time, to_time, async_req=True)
             >>> result = thread.get()
 
             Args:
                 location_id (int):
+                time_bucket (TimeBucket):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
 
             Keyword Args:
-                from_time (datetime): Date from fetch results. Format ISO-8601.. [optional]
-                to_time (datetime): Date to fetch results. Format ISO-8601.. [optional]
-                time_bucket (dict): Time bucket of query items.. [optional]
                 page (int): [optional] if omitted the server will use the default value of 0
                 size (int): [optional] if omitted the server will use the default value of 50
                 _return_http_data_only (bool): response data without head status
@@ -849,6 +1073,12 @@ class LocationsApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['location_id'] = \
                 location_id
+            kwargs['time_bucket'] = \
+                time_bucket
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
             return self.call_with_http_info(**kwargs)
 
         self.get_location_kpis_total_visitors_api_locations_location_id_kpis_total_visitors_get = _Endpoint(
@@ -865,14 +1095,17 @@ class LocationsApi(object):
             params_map={
                 'all': [
                     'location_id',
+                    'time_bucket',
                     'from_time',
                     'to_time',
-                    'time_bucket',
                     'page',
                     'size',
                 ],
                 'required': [
                     'location_id',
+                    'time_bucket',
+                    'from_time',
+                    'to_time',
                 ],
                 'nullable': [
                 ],
@@ -899,12 +1132,12 @@ class LocationsApi(object):
                 'openapi_types': {
                     'location_id':
                         (int,),
+                    'time_bucket':
+                        (TimeBucket,),
                     'from_time':
                         (datetime,),
                     'to_time':
                         (datetime,),
-                    'time_bucket':
-                        (dict,),
                     'page':
                         (int,),
                     'size':
@@ -912,17 +1145,17 @@ class LocationsApi(object):
                 },
                 'attribute_map': {
                     'location_id': 'location_id',
+                    'time_bucket': 'timeBucket',
                     'from_time': 'fromTime',
                     'to_time': 'toTime',
-                    'time_bucket': 'timeBucket',
                     'page': 'page',
                     'size': 'size',
                 },
                 'location_map': {
                     'location_id': 'path',
+                    'time_bucket': 'query',
                     'from_time': 'query',
                     'to_time': 'query',
-                    'time_bucket': 'query',
                     'page': 'query',
                     'size': 'query',
                 },
@@ -942,6 +1175,9 @@ class LocationsApi(object):
         def __get_location_kpis_traffic_api_locations_location_id_kpis_traffic_get(
             self,
             location_id,
+            time_bucket,
+            from_time,
+            to_time,
             **kwargs
         ):
             """Get Location Kpis Traffic  # noqa: E501
@@ -949,16 +1185,16 @@ class LocationsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_location_kpis_traffic_api_locations_location_id_kpis_traffic_get(location_id, async_req=True)
+            >>> thread = api.get_location_kpis_traffic_api_locations_location_id_kpis_traffic_get(location_id, time_bucket, from_time, to_time, async_req=True)
             >>> result = thread.get()
 
             Args:
                 location_id (int):
+                time_bucket (TimeBucket):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
 
             Keyword Args:
-                from_time (datetime): Date from fetch results. Format ISO-8601.. [optional]
-                to_time (datetime): Date to fetch results. Format ISO-8601.. [optional]
-                time_bucket (dict): Time bucket of query items.. [optional]
                 is_entrance (bool): Flag to filter entrance bots. Don't set to ignore condition.. [optional]
                 page (int): [optional] if omitted the server will use the default value of 0
                 size (int): [optional] if omitted the server will use the default value of 50
@@ -1008,6 +1244,12 @@ class LocationsApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['location_id'] = \
                 location_id
+            kwargs['time_bucket'] = \
+                time_bucket
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
             return self.call_with_http_info(**kwargs)
 
         self.get_location_kpis_traffic_api_locations_location_id_kpis_traffic_get = _Endpoint(
@@ -1024,15 +1266,186 @@ class LocationsApi(object):
             params_map={
                 'all': [
                     'location_id',
+                    'time_bucket',
                     'from_time',
                     'to_time',
-                    'time_bucket',
                     'is_entrance',
                     'page',
                     'size',
                 ],
                 'required': [
                     'location_id',
+                    'time_bucket',
+                    'from_time',
+                    'to_time',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'page',
+                    'size',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('page',): {
+
+                        'inclusive_minimum': 0,
+                    },
+                    ('size',): {
+
+                        'inclusive_maximum': 100,
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'location_id':
+                        (int,),
+                    'time_bucket':
+                        (TimeBucket,),
+                    'from_time':
+                        (datetime,),
+                    'to_time':
+                        (datetime,),
+                    'is_entrance':
+                        (bool,),
+                    'page':
+                        (int,),
+                    'size':
+                        (int,),
+                },
+                'attribute_map': {
+                    'location_id': 'location_id',
+                    'time_bucket': 'timeBucket',
+                    'from_time': 'fromTime',
+                    'to_time': 'toTime',
+                    'is_entrance': 'isEntrance',
+                    'page': 'page',
+                    'size': 'size',
+                },
+                'location_map': {
+                    'location_id': 'path',
+                    'time_bucket': 'query',
+                    'from_time': 'query',
+                    'to_time': 'query',
+                    'is_entrance': 'query',
+                    'page': 'query',
+                    'size': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_location_kpis_traffic_api_locations_location_id_kpis_traffic_get
+        )
+
+        def __get_location_person_routes_api_locations_location_id_person_routes_get(
+            self,
+            location_id,
+            from_time,
+            to_time,
+            **kwargs
+        ):
+            """Get Location Person Routes  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_location_person_routes_api_locations_location_id_person_routes_get(location_id, from_time, to_time, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                location_id (int):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
+
+            Keyword Args:
+                page (int): [optional] if omitted the server will use the default value of 0
+                size (int): [optional] if omitted the server will use the default value of 50
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                PageLocationRoutesForResponse
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['location_id'] = \
+                location_id
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
+            return self.call_with_http_info(**kwargs)
+
+        self.get_location_person_routes_api_locations_location_id_person_routes_get = _Endpoint(
+            settings={
+                'response_type': (PageLocationRoutesForResponse,),
+                'auth': [
+                    'APIToken'
+                ],
+                'endpoint_path': '/api/locations/{location_id}/person-routes',
+                'operation_id': 'get_location_person_routes_api_locations_location_id_person_routes_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'location_id',
+                    'from_time',
+                    'to_time',
+                    'page',
+                    'size',
+                ],
+                'required': [
+                    'location_id',
+                    'from_time',
+                    'to_time',
                 ],
                 'nullable': [
                 ],
@@ -1063,10 +1476,6 @@ class LocationsApi(object):
                         (datetime,),
                     'to_time':
                         (datetime,),
-                    'time_bucket':
-                        (dict,),
-                    'is_entrance':
-                        (bool,),
                     'page':
                         (int,),
                     'size':
@@ -1076,8 +1485,6 @@ class LocationsApi(object):
                     'location_id': 'location_id',
                     'from_time': 'fromTime',
                     'to_time': 'toTime',
-                    'time_bucket': 'timeBucket',
-                    'is_entrance': 'isEntrance',
                     'page': 'page',
                     'size': 'size',
                 },
@@ -1085,8 +1492,6 @@ class LocationsApi(object):
                     'location_id': 'path',
                     'from_time': 'query',
                     'to_time': 'query',
-                    'time_bucket': 'query',
-                    'is_entrance': 'query',
                     'page': 'query',
                     'size': 'query',
                 },
@@ -1100,5 +1505,5 @@ class LocationsApi(object):
                 'content_type': [],
             },
             api_client=api_client,
-            callable=__get_location_kpis_traffic_api_locations_location_id_kpis_traffic_get
+            callable=__get_location_person_routes_api_locations_location_id_person_routes_get
         )

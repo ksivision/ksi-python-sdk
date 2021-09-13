@@ -8,75 +8,26 @@
 """
 
 
+import sys
 import unittest
 
 import ksi_client_sdk
-from ksi_client_sdk.api.bots_api import BotsApi  # noqa: E501
+from ksi_client_sdk.model.kpi_queue_managment_response import KPIQueueManagmentResponse
 
 
-class TestBotsApi(unittest.TestCase):
-    """BotsApi unit test stubs"""
+class TestKPIQueueManagmentResponse(unittest.TestCase):
+    """KPIQueueManagmentResponse unit test stubs"""
 
     def setUp(self):
-        self.api = BotsApi()  # noqa: E501
+        pass
 
     def tearDown(self):
         pass
 
-    def test_get_all_bots_api_bots_get(self):
-        """Test case for get_all_bots_api_bots_get
-
-        Get All Bots  # noqa: E501
-        """
-        pass
-
-    def test_get_bot_events_covid19_prevention_api_bots_bot_id_events_covid19_prevention_get(self):
-        """Test case for get_bot_events_covid19_prevention_api_bots_bot_id_events_covid19_prevention_get
-
-        Get Bot Events Covid 19 Prevention  # noqa: E501
-        """
-        pass
-
-    def test_get_bot_events_queue_management_api_bots_bot_id_events_queue_management_get(self):
-        """Test case for get_bot_events_queue_management_api_bots_bot_id_events_queue_management_get
-
-        Get Bot Events Queue Management  # noqa: E501
-        """
-        pass
-
-    def test_get_bot_kpis_area_performance_api_bots_bot_id_kpis_area_performance_get(self):
-        """Test case for get_bot_kpis_area_performance_api_bots_bot_id_kpis_area_performance_get
-
-        Get Bot Kpis Area Performance  # noqa: E501
-        """
-        pass
-
-    def test_get_bot_kpis_exterior_analysis_api_bots_bot_id_kpis_exterior_analysis_get(self):
-        """Test case for get_bot_kpis_exterior_analysis_api_bots_bot_id_kpis_exterior_analysis_get
-
-        Get Bot Kpis Exterior Analysis  # noqa: E501
-        """
-        pass
-
-    def test_get_bot_kpis_queue_managment_api_bots_bot_id_kpis_queue_management_get(self):
-        """Test case for get_bot_kpis_queue_managment_api_bots_bot_id_kpis_queue_management_get
-
-        Get Bot Kpis Queue Managment  # noqa: E501
-        """
-        pass
-
-    def test_get_bot_kpis_traffic_api_bots_bot_id_kpis_traffic_get(self):
-        """Test case for get_bot_kpis_traffic_api_bots_bot_id_kpis_traffic_get
-
-        Get Bot Kpis Traffic  # noqa: E501
-        """
-        pass
-
-    def test_get_bot_kpis_traffic_with_data_features_api_bots_bot_id_kpis_traffic_features_get(self):
-        """Test case for get_bot_kpis_traffic_with_data_features_api_bots_bot_id_kpis_traffic_features_get
-
-        Get Bot Kpis Traffic With  Data Features  # noqa: E501
-        """
+    def testKPIQueueManagmentResponse(self):
+        """Test KPIQueueManagmentResponse"""
+        # FIXME: construct object with mandatory attributes with example values
+        # model = KPIQueueManagmentResponse()  # noqa: E501
         pass
 
 

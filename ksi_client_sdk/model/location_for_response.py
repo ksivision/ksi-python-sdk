@@ -83,6 +83,7 @@ class LocationForResponse(ModelNormal):
         return {
             'id': (int,),  # noqa: E501
             'description': (str,),  # noqa: E501
+            'group_of_locations_name': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -93,6 +94,7 @@ class LocationForResponse(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'description': 'description',  # noqa: E501
+        'group_of_locations_name': 'group_of_locations_name',  # noqa: E501
     }
 
     read_only_vars = {
@@ -106,8 +108,8 @@ class LocationForResponse(ModelNormal):
         """LocationForResponse - a model defined in OpenAPI
 
         Args:
-            id (int):
-            description (str):
+            id (int): Location id.
+            description (str): Name of location.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -140,6 +142,7 @@ class LocationForResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            group_of_locations_name (str): Group name of location.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -193,8 +196,8 @@ class LocationForResponse(ModelNormal):
         """LocationForResponse - a model defined in OpenAPI
 
         Args:
-            id (int):
-            description (str):
+            id (int): Location id.
+            description (str): Name of location.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -227,6 +230,7 @@ class LocationForResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            group_of_locations_name (str): Group name of location.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -26,7 +26,10 @@ from ksi_client_sdk.model.page_bot_event_for_response import PageBotEventForResp
 from ksi_client_sdk.model.page_bot_for_response import PageBotForResponse
 from ksi_client_sdk.model.page_kpi_area_performance_for_response import PageKPIAreaPerformanceForResponse
 from ksi_client_sdk.model.page_kpi_exterior_analysis_for_response import PageKPIExteriorAnalysisForResponse
+from ksi_client_sdk.model.page_kpi_queue_managment_response import PageKPIQueueManagmentResponse
 from ksi_client_sdk.model.page_kpi_traffic_for_response import PageKPITrafficForResponse
+from ksi_client_sdk.model.page_kpi_traffic_with_features_for_response import PageKPITrafficWithFeaturesForResponse
+from ksi_client_sdk.model.time_bucket import TimeBucket
 
 
 class BotsApi(object):
@@ -43,6 +46,7 @@ class BotsApi(object):
 
         def __get_all_bots_api_bots_get(
             self,
+            location_id,
             **kwargs
         ):
             """Get All Bots  # noqa: E501
@@ -50,12 +54,13 @@ class BotsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_all_bots_api_bots_get(async_req=True)
+            >>> thread = api.get_all_bots_api_bots_get(location_id, async_req=True)
             >>> result = thread.get()
 
+            Args:
+                location_id (int): Location id to filter.
 
             Keyword Args:
-                location_id (int): Location id to filter.. [optional]
                 page (int): [optional] if omitted the server will use the default value of 0
                 size (int): [optional] if omitted the server will use the default value of 50
                 _return_http_data_only (bool): response data without head status
@@ -102,6 +107,8 @@ class BotsApi(object):
                 '_check_return_type', True
             )
             kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['location_id'] = \
+                location_id
             return self.call_with_http_info(**kwargs)
 
         self.get_all_bots_api_bots_get = _Endpoint(
@@ -121,7 +128,9 @@ class BotsApi(object):
                     'page',
                     'size',
                 ],
-                'required': [],
+                'required': [
+                    'location_id',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -178,6 +187,8 @@ class BotsApi(object):
         def __get_bot_events_covid19_prevention_api_bots_bot_id_events_covid19_prevention_get(
             self,
             bot_id,
+            from_time,
+            to_time,
             **kwargs
         ):
             """Get Bot Events Covid 19 Prevention  # noqa: E501
@@ -185,15 +196,15 @@ class BotsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_bot_events_covid19_prevention_api_bots_bot_id_events_covid19_prevention_get(bot_id, async_req=True)
+            >>> thread = api.get_bot_events_covid19_prevention_api_bots_bot_id_events_covid19_prevention_get(bot_id, from_time, to_time, async_req=True)
             >>> result = thread.get()
 
             Args:
                 bot_id (int):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
 
             Keyword Args:
-                from_time (datetime): Date from fetch results. Format ISO-8601.. [optional]
-                to_time (datetime): Date to fetch results. Format ISO-8601.. [optional]
                 page (int): [optional] if omitted the server will use the default value of 0
                 size (int): [optional] if omitted the server will use the default value of 50
                 _return_http_data_only (bool): response data without head status
@@ -242,6 +253,10 @@ class BotsApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['bot_id'] = \
                 bot_id
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
             return self.call_with_http_info(**kwargs)
 
         self.get_bot_events_covid19_prevention_api_bots_bot_id_events_covid19_prevention_get = _Endpoint(
@@ -265,6 +280,8 @@ class BotsApi(object):
                 ],
                 'required': [
                     'bot_id',
+                    'from_time',
+                    'to_time',
                 ],
                 'nullable': [
                 ],
@@ -330,6 +347,8 @@ class BotsApi(object):
         def __get_bot_events_queue_management_api_bots_bot_id_events_queue_management_get(
             self,
             bot_id,
+            from_time,
+            to_time,
             **kwargs
         ):
             """Get Bot Events Queue Management  # noqa: E501
@@ -337,15 +356,15 @@ class BotsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_bot_events_queue_management_api_bots_bot_id_events_queue_management_get(bot_id, async_req=True)
+            >>> thread = api.get_bot_events_queue_management_api_bots_bot_id_events_queue_management_get(bot_id, from_time, to_time, async_req=True)
             >>> result = thread.get()
 
             Args:
                 bot_id (int):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
 
             Keyword Args:
-                from_time (datetime): Date from fetch results. Format ISO-8601.. [optional]
-                to_time (datetime): Date to fetch results. Format ISO-8601.. [optional]
                 page (int): [optional] if omitted the server will use the default value of 0
                 size (int): [optional] if omitted the server will use the default value of 50
                 _return_http_data_only (bool): response data without head status
@@ -394,6 +413,10 @@ class BotsApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['bot_id'] = \
                 bot_id
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
             return self.call_with_http_info(**kwargs)
 
         self.get_bot_events_queue_management_api_bots_bot_id_events_queue_management_get = _Endpoint(
@@ -417,6 +440,8 @@ class BotsApi(object):
                 ],
                 'required': [
                     'bot_id',
+                    'from_time',
+                    'to_time',
                 ],
                 'nullable': [
                 ],
@@ -482,6 +507,9 @@ class BotsApi(object):
         def __get_bot_kpis_area_performance_api_bots_bot_id_kpis_area_performance_get(
             self,
             bot_id,
+            time_bucket,
+            from_time,
+            to_time,
             **kwargs
         ):
             """Get Bot Kpis Area Performance  # noqa: E501
@@ -489,16 +517,16 @@ class BotsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_bot_kpis_area_performance_api_bots_bot_id_kpis_area_performance_get(bot_id, async_req=True)
+            >>> thread = api.get_bot_kpis_area_performance_api_bots_bot_id_kpis_area_performance_get(bot_id, time_bucket, from_time, to_time, async_req=True)
             >>> result = thread.get()
 
             Args:
                 bot_id (int):
+                time_bucket (TimeBucket):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
 
             Keyword Args:
-                from_time (datetime): Date from fetch results. Format ISO-8601.. [optional]
-                to_time (datetime): Date to fetch results. Format ISO-8601.. [optional]
-                time_bucket (dict): Time bucket of query items.. [optional]
                 page (int): [optional] if omitted the server will use the default value of 0
                 size (int): [optional] if omitted the server will use the default value of 50
                 _return_http_data_only (bool): response data without head status
@@ -547,6 +575,12 @@ class BotsApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['bot_id'] = \
                 bot_id
+            kwargs['time_bucket'] = \
+                time_bucket
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
             return self.call_with_http_info(**kwargs)
 
         self.get_bot_kpis_area_performance_api_bots_bot_id_kpis_area_performance_get = _Endpoint(
@@ -563,14 +597,17 @@ class BotsApi(object):
             params_map={
                 'all': [
                     'bot_id',
+                    'time_bucket',
                     'from_time',
                     'to_time',
-                    'time_bucket',
                     'page',
                     'size',
                 ],
                 'required': [
                     'bot_id',
+                    'time_bucket',
+                    'from_time',
+                    'to_time',
                 ],
                 'nullable': [
                 ],
@@ -597,12 +634,12 @@ class BotsApi(object):
                 'openapi_types': {
                     'bot_id':
                         (int,),
+                    'time_bucket':
+                        (TimeBucket,),
                     'from_time':
                         (datetime,),
                     'to_time':
                         (datetime,),
-                    'time_bucket':
-                        (dict,),
                     'page':
                         (int,),
                     'size':
@@ -610,17 +647,17 @@ class BotsApi(object):
                 },
                 'attribute_map': {
                     'bot_id': 'bot_id',
+                    'time_bucket': 'timeBucket',
                     'from_time': 'fromTime',
                     'to_time': 'toTime',
-                    'time_bucket': 'timeBucket',
                     'page': 'page',
                     'size': 'size',
                 },
                 'location_map': {
                     'bot_id': 'path',
+                    'time_bucket': 'query',
                     'from_time': 'query',
                     'to_time': 'query',
-                    'time_bucket': 'query',
                     'page': 'query',
                     'size': 'query',
                 },
@@ -640,6 +677,9 @@ class BotsApi(object):
         def __get_bot_kpis_exterior_analysis_api_bots_bot_id_kpis_exterior_analysis_get(
             self,
             bot_id,
+            time_bucket,
+            from_time,
+            to_time,
             **kwargs
         ):
             """Get Bot Kpis Exterior Analysis  # noqa: E501
@@ -647,16 +687,16 @@ class BotsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_bot_kpis_exterior_analysis_api_bots_bot_id_kpis_exterior_analysis_get(bot_id, async_req=True)
+            >>> thread = api.get_bot_kpis_exterior_analysis_api_bots_bot_id_kpis_exterior_analysis_get(bot_id, time_bucket, from_time, to_time, async_req=True)
             >>> result = thread.get()
 
             Args:
                 bot_id (int):
+                time_bucket (TimeBucket):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
 
             Keyword Args:
-                from_time (datetime): Date from fetch results. Format ISO-8601.. [optional]
-                to_time (datetime): Date to fetch results. Format ISO-8601.. [optional]
-                time_bucket (dict): Time bucket of query items.. [optional]
                 page (int): [optional] if omitted the server will use the default value of 0
                 size (int): [optional] if omitted the server will use the default value of 50
                 _return_http_data_only (bool): response data without head status
@@ -705,6 +745,12 @@ class BotsApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['bot_id'] = \
                 bot_id
+            kwargs['time_bucket'] = \
+                time_bucket
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
             return self.call_with_http_info(**kwargs)
 
         self.get_bot_kpis_exterior_analysis_api_bots_bot_id_kpis_exterior_analysis_get = _Endpoint(
@@ -721,14 +767,17 @@ class BotsApi(object):
             params_map={
                 'all': [
                     'bot_id',
+                    'time_bucket',
                     'from_time',
                     'to_time',
-                    'time_bucket',
                     'page',
                     'size',
                 ],
                 'required': [
                     'bot_id',
+                    'time_bucket',
+                    'from_time',
+                    'to_time',
                 ],
                 'nullable': [
                 ],
@@ -755,12 +804,12 @@ class BotsApi(object):
                 'openapi_types': {
                     'bot_id':
                         (int,),
+                    'time_bucket':
+                        (TimeBucket,),
                     'from_time':
                         (datetime,),
                     'to_time':
                         (datetime,),
-                    'time_bucket':
-                        (dict,),
                     'page':
                         (int,),
                     'size':
@@ -768,17 +817,17 @@ class BotsApi(object):
                 },
                 'attribute_map': {
                     'bot_id': 'bot_id',
+                    'time_bucket': 'timeBucket',
                     'from_time': 'fromTime',
                     'to_time': 'toTime',
-                    'time_bucket': 'timeBucket',
                     'page': 'page',
                     'size': 'size',
                 },
                 'location_map': {
                     'bot_id': 'path',
+                    'time_bucket': 'query',
                     'from_time': 'query',
                     'to_time': 'query',
-                    'time_bucket': 'query',
                     'page': 'query',
                     'size': 'query',
                 },
@@ -795,9 +844,182 @@ class BotsApi(object):
             callable=__get_bot_kpis_exterior_analysis_api_bots_bot_id_kpis_exterior_analysis_get
         )
 
+        def __get_bot_kpis_queue_managment_api_bots_bot_id_kpis_queue_management_get(
+            self,
+            bot_id,
+            time_bucket,
+            from_time,
+            to_time,
+            **kwargs
+        ):
+            """Get Bot Kpis Queue Managment  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_bot_kpis_queue_managment_api_bots_bot_id_kpis_queue_management_get(bot_id, time_bucket, from_time, to_time, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                bot_id (int):
+                time_bucket (TimeBucket):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
+
+            Keyword Args:
+                page (int): [optional] if omitted the server will use the default value of 0
+                size (int): [optional] if omitted the server will use the default value of 50
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                PageKPIQueueManagmentResponse
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['bot_id'] = \
+                bot_id
+            kwargs['time_bucket'] = \
+                time_bucket
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
+            return self.call_with_http_info(**kwargs)
+
+        self.get_bot_kpis_queue_managment_api_bots_bot_id_kpis_queue_management_get = _Endpoint(
+            settings={
+                'response_type': (PageKPIQueueManagmentResponse,),
+                'auth': [
+                    'APIToken'
+                ],
+                'endpoint_path': '/api/bots/{bot_id}/kpis/queue-management',
+                'operation_id': 'get_bot_kpis_queue_managment_api_bots_bot_id_kpis_queue_management_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'bot_id',
+                    'time_bucket',
+                    'from_time',
+                    'to_time',
+                    'page',
+                    'size',
+                ],
+                'required': [
+                    'bot_id',
+                    'time_bucket',
+                    'from_time',
+                    'to_time',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'page',
+                    'size',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('page',): {
+
+                        'inclusive_minimum': 0,
+                    },
+                    ('size',): {
+
+                        'inclusive_maximum': 100,
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'bot_id':
+                        (int,),
+                    'time_bucket':
+                        (TimeBucket,),
+                    'from_time':
+                        (datetime,),
+                    'to_time':
+                        (datetime,),
+                    'page':
+                        (int,),
+                    'size':
+                        (int,),
+                },
+                'attribute_map': {
+                    'bot_id': 'bot_id',
+                    'time_bucket': 'timeBucket',
+                    'from_time': 'fromTime',
+                    'to_time': 'toTime',
+                    'page': 'page',
+                    'size': 'size',
+                },
+                'location_map': {
+                    'bot_id': 'path',
+                    'time_bucket': 'query',
+                    'from_time': 'query',
+                    'to_time': 'query',
+                    'page': 'query',
+                    'size': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_bot_kpis_queue_managment_api_bots_bot_id_kpis_queue_management_get
+        )
+
         def __get_bot_kpis_traffic_api_bots_bot_id_kpis_traffic_get(
             self,
             bot_id,
+            time_bucket,
+            from_time,
+            to_time,
             **kwargs
         ):
             """Get Bot Kpis Traffic  # noqa: E501
@@ -805,16 +1027,16 @@ class BotsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_bot_kpis_traffic_api_bots_bot_id_kpis_traffic_get(bot_id, async_req=True)
+            >>> thread = api.get_bot_kpis_traffic_api_bots_bot_id_kpis_traffic_get(bot_id, time_bucket, from_time, to_time, async_req=True)
             >>> result = thread.get()
 
             Args:
                 bot_id (int):
+                time_bucket (TimeBucket):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
 
             Keyword Args:
-                from_time (datetime): Date from fetch results. Format ISO-8601.. [optional]
-                to_time (datetime): Date to fetch results. Format ISO-8601.. [optional]
-                time_bucket (dict): Time bucket of query items.. [optional]
                 page (int): [optional] if omitted the server will use the default value of 0
                 size (int): [optional] if omitted the server will use the default value of 50
                 _return_http_data_only (bool): response data without head status
@@ -863,6 +1085,12 @@ class BotsApi(object):
             kwargs['_host_index'] = kwargs.get('_host_index')
             kwargs['bot_id'] = \
                 bot_id
+            kwargs['time_bucket'] = \
+                time_bucket
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
             return self.call_with_http_info(**kwargs)
 
         self.get_bot_kpis_traffic_api_bots_bot_id_kpis_traffic_get = _Endpoint(
@@ -879,14 +1107,181 @@ class BotsApi(object):
             params_map={
                 'all': [
                     'bot_id',
+                    'time_bucket',
                     'from_time',
                     'to_time',
-                    'time_bucket',
                     'page',
                     'size',
                 ],
                 'required': [
                     'bot_id',
+                    'time_bucket',
+                    'from_time',
+                    'to_time',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'page',
+                    'size',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('page',): {
+
+                        'inclusive_minimum': 0,
+                    },
+                    ('size',): {
+
+                        'inclusive_maximum': 100,
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'bot_id':
+                        (int,),
+                    'time_bucket':
+                        (TimeBucket,),
+                    'from_time':
+                        (datetime,),
+                    'to_time':
+                        (datetime,),
+                    'page':
+                        (int,),
+                    'size':
+                        (int,),
+                },
+                'attribute_map': {
+                    'bot_id': 'bot_id',
+                    'time_bucket': 'timeBucket',
+                    'from_time': 'fromTime',
+                    'to_time': 'toTime',
+                    'page': 'page',
+                    'size': 'size',
+                },
+                'location_map': {
+                    'bot_id': 'path',
+                    'time_bucket': 'query',
+                    'from_time': 'query',
+                    'to_time': 'query',
+                    'page': 'query',
+                    'size': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_bot_kpis_traffic_api_bots_bot_id_kpis_traffic_get
+        )
+
+        def __get_bot_kpis_traffic_with_data_features_api_bots_bot_id_kpis_traffic_features_get(
+            self,
+            bot_id,
+            from_time,
+            to_time,
+            **kwargs
+        ):
+            """Get Bot Kpis Traffic With  Data Features  # noqa: E501
+
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_bot_kpis_traffic_with_data_features_api_bots_bot_id_kpis_traffic_features_get(bot_id, from_time, to_time, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                bot_id (int):
+                from_time (datetime): Date from fetch results. Format ISO-8601.
+                to_time (datetime): Date to fetch results. Format ISO-8601.
+
+            Keyword Args:
+                page (int): [optional] if omitted the server will use the default value of 0
+                size (int): [optional] if omitted the server will use the default value of 50
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                PageKPITrafficWithFeaturesForResponse
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['bot_id'] = \
+                bot_id
+            kwargs['from_time'] = \
+                from_time
+            kwargs['to_time'] = \
+                to_time
+            return self.call_with_http_info(**kwargs)
+
+        self.get_bot_kpis_traffic_with_data_features_api_bots_bot_id_kpis_traffic_features_get = _Endpoint(
+            settings={
+                'response_type': (PageKPITrafficWithFeaturesForResponse,),
+                'auth': [
+                    'APIToken'
+                ],
+                'endpoint_path': '/api/bots/{bot_id}/kpis/traffic-features',
+                'operation_id': 'get_bot_kpis_traffic_with_data_features_api_bots_bot_id_kpis_traffic_features_get',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'bot_id',
+                    'from_time',
+                    'to_time',
+                    'page',
+                    'size',
+                ],
+                'required': [
+                    'bot_id',
+                    'from_time',
+                    'to_time',
                 ],
                 'nullable': [
                 ],
@@ -917,8 +1312,6 @@ class BotsApi(object):
                         (datetime,),
                     'to_time':
                         (datetime,),
-                    'time_bucket':
-                        (dict,),
                     'page':
                         (int,),
                     'size':
@@ -928,7 +1321,6 @@ class BotsApi(object):
                     'bot_id': 'bot_id',
                     'from_time': 'fromTime',
                     'to_time': 'toTime',
-                    'time_bucket': 'timeBucket',
                     'page': 'page',
                     'size': 'size',
                 },
@@ -936,7 +1328,6 @@ class BotsApi(object):
                     'bot_id': 'path',
                     'from_time': 'query',
                     'to_time': 'query',
-                    'time_bucket': 'query',
                     'page': 'query',
                     'size': 'query',
                 },
@@ -950,5 +1341,5 @@ class BotsApi(object):
                 'content_type': [],
             },
             api_client=api_client,
-            callable=__get_bot_kpis_traffic_api_bots_bot_id_kpis_traffic_get
+            callable=__get_bot_kpis_traffic_with_data_features_api_bots_bot_id_kpis_traffic_features_get
         )
