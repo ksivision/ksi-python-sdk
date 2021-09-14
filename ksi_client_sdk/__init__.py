@@ -10,7 +10,7 @@
 """
 
 
-__version__ = "1.0.0"
+__version__ = "2.0.1"
 
 # import ApiClient
 from ksi_client_sdk.api_client import ApiClient
